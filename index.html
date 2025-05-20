@@ -1,0 +1,71 @@
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+
+function HomePage() {
+  return (
+    <motion.div className="p-4 space-y-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <h1 className="text-3xl font-bold text-cyan-400">Latest News</h1>
+      <Card className="bg-gradient-to-r from-cyan-800 to-blue-700 text-white shadow-lg">
+        <CardContent className="p-4">
+          <h2 className="text-xl font-semibold">New Coding Project Released!</h2>
+          <p>Check out the latest tool built to automate data logging using ESP32.</p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
+function ProjectPage() {
+  return (
+    <motion.div className="p-4 space-y-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <h1 className="text-3xl font-bold text-cyan-400">Projects</h1>
+      <Card className="bg-gradient-to-r from-cyan-800 to-blue-700 text-white shadow-lg">
+        <CardContent className="p-4">
+          <h2 className="text-xl font-semibold">Smart Irrigation System</h2>
+          <p>Combines electronics and mechanics to automate crop watering using sensors and a custom control system.</p>
+        </CardContent>
+      </Card>
+      <Card className="bg-gradient-to-r from-cyan-800 to-blue-700 text-white shadow-lg">
+        <CardContent className="p-4">
+          <h2 className="text-xl font-semibold">Modular Robotics Kit</h2>
+          <p>Build robots with interchangeable mechanical and electronic modules. Great for learning and prototyping.</p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
+function InfoPage() {
+  return (
+    <motion.div className="p-4 space-y-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <h1 className="text-3xl font-bold text-cyan-400">About Me</h1>
+      <p className="text-white bg-gray-800 p-4 rounded-lg shadow">
+        I’m a tech enthusiast working on projects that blend coding, electronics, and mechanics. My mission is to create tools that empower developers and hobbyists.
+      </p>
+      <h2 className="text-2xl font-semibold mt-4 text-cyan-300">Project Philosophy</h2>
+      <p className="text-white bg-gray-800 p-4 rounded-lg shadow">
+        Each project is designed to be modular, educational, and open-source to help foster innovation and community collaboration.
+      </p>
+    </motion.div>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100">
+        <nav className="bg-gray-950 p-4 flex space-x-6 shadow-md border-b border-cyan-600">
+          <Link to="/" className="text-cyan-300 hover:text-white transition-colors">Home</Link>
+          <Link to="/projects" className="text-cyan-300 hover:text-white transition-colors">Projects</Link>
+          <Link to="/info" className="text-cyan-300 hover:text-white transition-colors">Info</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectPage />} />
+          <Route path="/info" element={<InfoPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
